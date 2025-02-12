@@ -72,7 +72,7 @@ const EvidenceUpload = () => {
           <Card>
             <CardContent className="p-6">
               <div
-                className={`border-2 border-dashed rounded-lg p-8 text-center
+                className={`border-2 border-dashed rounded-lg p-8 text-center flex flex-col gap-4
                   ${
                     dragActive
                       ? "border-purple-500 bg-purple-50"
@@ -85,9 +85,29 @@ const EvidenceUpload = () => {
               >
                 <Upload className="h-8 w-8 text-purple-600 mx-auto mb-4" />
                 <div className="font-medium mb-2">ลากไฟล์มาวางที่นี่ หรือ</div>
-                <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                <input
+                  type="file"
+                  className="hidden"
+                  id="file-upload"
+                  multiple
+                  onChange={(e) => {
+                    const files = Array.from(e.target.files ?? []);
+                    setUploadedFiles((prevFiles) => [
+                      ...prevFiles,
+                      ...files.map((file) => ({
+                        name: file.name,
+                        type: file.type,
+                        size: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
+                      })),
+                    ]);
+                  }}
+                />
+                <label
+                  htmlFor="file-upload"
+                  className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 cursor-pointer grow-0"
+                >
                   เลือกไฟล์
-                </button>
+                </label>
                 <div className="text-sm text-gray-500 mt-2">
                   สูงสุด 100 MB ต่อไฟล์
                 </div>
