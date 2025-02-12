@@ -1,45 +1,47 @@
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Upload, 
-  Camera, 
-  File, 
-  Image, 
-  Video, 
-  MessageSquare, 
-  FileAudio, 
-  Receipt, 
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Upload,
+  Camera,
+  File,
+  Image,
+  Video,
+  MessageSquare,
+  FileAudio,
+  Receipt,
   ArrowLeft,
-  Plus,
-  X
-} from 'lucide-react';
+  X,
+} from "lucide-react";
+import { Link } from "react-router";
 
 const EvidenceUpload = () => {
   const [dragActive, setDragActive] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([
-    { name: 'chat_screenshot.jpg', type: 'image', size: '2.4 MB' },
-    { name: 'receipt_001.pdf', type: 'document', size: '1.1 MB' }
+    { name: "chat_screenshot.jpg", type: "image", size: "2.4 MB" },
+    { name: "receipt_001.pdf", type: "document", size: "1.1 MB" },
   ]);
 
   const evidenceTypes = [
-    { icon: Image, label: 'รูปภาพ', formats: 'JPG, PNG, HEIC' },
-    { icon: Video, label: 'วิดีโอ', formats: 'MP4, MOV' },
-    { icon: FileAudio, label: 'เสียง', formats: 'MP3, WAV' },
-    { icon: Receipt, label: 'ใบเสร็จ', formats: 'PDF, JPG' },
-    { icon: MessageSquare, label: 'ข้อความแชท', formats: 'JPG, PNG, PDF' },
-    { icon: File, label: 'เอกสารอื่นๆ', formats: 'PDF, DOCX' }
+    { icon: Image, label: "รูปภาพ", formats: "JPG, PNG, HEIC" },
+    { icon: Video, label: "วิดีโอ", formats: "MP4, MOV" },
+    { icon: FileAudio, label: "เสียง", formats: "MP3, WAV" },
+    { icon: Receipt, label: "ใบเสร็จ", formats: "PDF, JPG" },
+    { icon: MessageSquare, label: "ข้อความแชท", formats: "JPG, PNG, PDF" },
+    { icon: File, label: "เอกสารอื่นๆ", formats: "PDF, DOCX" },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm fixed w-full z-10">
-        <div className="flex items-center px-6 py-3">
-          <button className="flex items-center gap-2 text-gray-600">
+        <div className="flex items-center px-6 py-4">
+          <Link to="/" className="flex items-center gap-2 text-gray-600">
             <ArrowLeft className="h-5 w-5" />
             <span>กลับ</span>
-          </button>
-          <h1 className="ml-4 text-xl font-bold text-purple-600">อัพโหลดหลักฐาน</h1>
+          </Link>
+          <h1 className="ml-4 text-xl font-bold text-purple-600">
+            อัพโหลดหลักฐาน
+          </h1>
         </div>
       </header>
 
@@ -57,7 +59,9 @@ const EvidenceUpload = () => {
                   <div key={index} className="p-4 border rounded-lg bg-gray-50">
                     <type.icon className="h-6 w-6 text-purple-600 mb-2" />
                     <div className="font-medium">{type.label}</div>
-                    <div className="text-sm text-gray-500">รองรับไฟล์ {type.formats}</div>
+                    <div className="text-sm text-gray-500">
+                      รองรับไฟล์ {type.formats}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -67,9 +71,13 @@ const EvidenceUpload = () => {
           {/* Upload Area */}
           <Card>
             <CardContent className="p-6">
-              <div 
+              <div
                 className={`border-2 border-dashed rounded-lg p-8 text-center
-                  ${dragActive ? 'border-purple-500 bg-purple-50' : 'border-gray-300'}`}
+                  ${
+                    dragActive
+                      ? "border-purple-500 bg-purple-50"
+                      : "border-gray-300"
+                  }`}
                 onDragEnter={() => setDragActive(true)}
                 onDragLeave={() => setDragActive(false)}
                 onDragOver={(e) => e.preventDefault()}
@@ -80,7 +88,9 @@ const EvidenceUpload = () => {
                 <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
                   เลือกไฟล์
                 </button>
-                <div className="text-sm text-gray-500 mt-2">สูงสุด 100 MB ต่อไฟล์</div>
+                <div className="text-sm text-gray-500 mt-2">
+                  สูงสุด 100 MB ต่อไฟล์
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -106,12 +116,17 @@ const EvidenceUpload = () => {
               <CardContent>
                 <div className="space-y-3">
                   {uploadedFiles.map((file, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                    >
                       <div className="flex items-center gap-3">
                         <File className="h-5 w-5 text-purple-600" />
                         <div>
                           <div className="font-medium">{file.name}</div>
-                          <div className="text-sm text-gray-500">{file.size}</div>
+                          <div className="text-sm text-gray-500">
+                            {file.size}
+                          </div>
                         </div>
                       </div>
                       <button className="p-1 hover:bg-gray-200 rounded">

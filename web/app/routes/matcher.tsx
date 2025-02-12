@@ -1,9 +1,9 @@
-import EvidenceUpload from "~/components/evidence-upload";
 import type { Route } from "./+types/home";
+import MassLitigationMatcher from "~/components/mass-litigation-matcher";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Evidence" },
+    { title: "Matcher" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
@@ -11,7 +11,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Evidence() {
   return (
     <div>
-      <EvidenceUpload />
+      <MassLitigationMatcher />
     </div>
   );
 }
