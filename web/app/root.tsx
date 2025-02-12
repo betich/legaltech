@@ -8,8 +8,9 @@ import {
 } from "react-router";
 
 import "./app.css";
+import type { Route } from "./+types/root";
 
-export const links = () => [
+export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -44,7 +45,7 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({ error }: { error: unknown }) {
+export function ErrorBoundary({ error }: { error: Route.ErrorBoundaryProps }) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
