@@ -11,6 +11,18 @@ import { Link } from "react-router";
 const ClaimHubClientPortal = () => {
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Say Hi */}
+      <main className="relative pt-24">
+        <div className="bg-purple-600 text-white py-12">
+          <div className="max-w-4xl mx-auto px-6">
+            <h1 className="text-3xl font-bold">ยินดีต้อนรับสู่ ClaimHub</h1>
+            <p className="mt-2 text-lg">
+              ระบบการจัดการคดีที่ทันสมัยและง่ายต่อการใช้งาน
+            </p>
+          </div>
+        </div>
+      </main>
+
       {/* Main Content */}
       <div className="pt-16 px-6">
         <div className="max-w-4xl mx-auto space-y-6 py-6">
