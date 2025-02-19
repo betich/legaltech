@@ -1,4 +1,4 @@
-import { Upload, Users } from "lucide-react";
+import { Search } from "lucide-react";
 import { Link } from "react-router";
 
 export function Header() {
@@ -9,8 +9,9 @@ export function Header() {
           ClaimHub
         </Link>
         <div className="flex items-center space-x-4">
-          <Link to="/matcher" className="text-gray-600">
-            <Users className="h-5 w-5 text-gray-500" />
+          <Link to="/matcher" className="text-gray-600 flex items-center gap-2">
+            <Search className="h-5 w-5 text-gray-500" />
+            <span>ค้นหา</span>
           </Link>
         </div>
       </div>
