@@ -1,3 +1,4 @@
+import { Header } from "~/components/common/header";
 import type { Route } from "./+types/home";
 import ClaimHubClientPortal from "~/components/claimhub-client";
 
@@ -9,5 +10,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <ClaimHubClientPortal />;
+  return <>
+  <Header />
+  <ClaimHubClientPortal />;
+  </>
 }
