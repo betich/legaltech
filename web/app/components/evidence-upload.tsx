@@ -58,7 +58,7 @@ const EvidenceUpload = () => {
             <span>กลับ</span>
           </Link>
           <h1 className="ml-4 text-xl font-bold text-purple-600">
-            อัพโหลดหลักฐาน
+            อัปโหลดหลักฐาน
           </h1>
         </div>
       </header>
@@ -139,7 +139,7 @@ const EvidenceUpload = () => {
           {uploadedFiles.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>ไฟล์ที่อัพโหลดแล้ว</CardTitle>
+                <CardTitle>ไฟล์ที่อัปโหลดแล้ว</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">

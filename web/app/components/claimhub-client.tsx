@@ -1,15 +1,12 @@
-import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
-  Bell,
   Calendar,
-  Search,
-  User,
-  FileText,
   Clock,
   PhoneCall,
   MessageCircle,
+  Upload,
 } from "lucide-react";
+import { Link } from "react-router";
 
 const ClaimHubClientPortal = () => {
   return (
@@ -33,11 +30,20 @@ const ClaimHubClientPortal = () => {
                       กำลังดำเนินการ
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-gray-400" />
-                    <span className="text-sm text-gray-600">
-                      อัพเดทล่าสุด: 2 ชั่วโมงที่แล้ว
-                    </span>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-gray-400" />
+                      <span className="text-sm text-gray-600">
+                        อัพเดทล่าสุด: 2 ชั่วโมงที่แล้ว
+                      </span>
+                    </div>
+                    <Link
+                      to="/evidence"
+                      className="text-white flex items-center gap-2 rounded-md px-6 py-2 bg-purple-600 hover:bg-purple-700"
+                    >
+                      <Upload className="h-5 w-5 text-white" />
+                      <span>อัปโหลดหลักฐาน</span>
+                    </Link>
                   </div>
                 </div>
               </div>

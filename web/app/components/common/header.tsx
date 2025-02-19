@@ -12,9 +12,6 @@ export function Header() {
           <Link to="/matcher" className="text-gray-600">
             <Users className="h-5 w-5 text-gray-500" />
           </Link>
-          <Link to="/evidence" className="text-gray-600">
-            <Upload className="h-5 w-5 text-gray-500" />
-          </Link>
         </div>
       </div>
     </header>
