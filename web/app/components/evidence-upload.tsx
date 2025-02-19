@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import { Button } from "~/components/ui/button";
 import {
   Upload,
   Camera,
@@ -29,6 +30,23 @@ const EvidenceUpload = () => {
     { icon: MessageSquare, label: "ข้อความแชท", formats: "JPG, PNG, PDF" },
     { icon: File, label: "เอกสารอื่นๆ", formats: "PDF, DOCX" },
   ];
+
+  const handleRemoveFile = (index: number) => {
+    setUploadedFiles(uploadedFiles.filter((_, i) => i !== index));
+  };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setUploadedFiles([
+        ...uploadedFiles,
+        ...Array.from(event.target.files).map((file) => ({
+          name: file.name,
+          type: file.type,
+          size: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
+        })),
+      ]);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -90,17 +108,7 @@ const EvidenceUpload = () => {
                   className="hidden"
                   id="file-upload"
                   multiple
-                  onChange={(e) => {
-                    const files = Array.from(e.target.files ?? []);
-                    setUploadedFiles((prevFiles) => [
-                      ...prevFiles,
-                      ...files.map((file) => ({
-                        name: file.name,
-                        type: file.type,
-                        size: `${(file.size / (1024 * 1024)).toFixed(2)} MB`,
-                      })),
-                    ]);
-                  }}
+                  onChange={handleFileUpload}
                 />
                 <label
                   htmlFor="file-upload"
@@ -149,9 +157,12 @@ const EvidenceUpload = () => {
                           </div>
                         </div>
                       </div>
-                      <button className="p-1 hover:bg-gray-200 rounded">
-                        <X className="h-5 w-5 text-gray-500" />
-                      </button>
+                      <Button
+                        variant="remove"
+                        onClick={() => handleRemoveFile(index)}
+                      >
+                        Remove
+                      </Button>
                     </div>
                   ))}
                 </div>
