@@ -5,6 +5,7 @@ import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { Button } from "~/components/ui/button";
 import { AlertCircle, Upload, Plus, Trash2 } from "lucide-react";
+import { Link } from "react-router";
 
 const CreateClaimForm = () => {
   const [plaintiffs, setPlaintiffs] = useState([
@@ -173,9 +174,11 @@ const CreateClaimForm = () => {
 
         {/* Submit Button */}
         <div className="flex justify-end gap-4">
-          <Button className="bg-purple-600 hover:bg-purple-700">
-            บันทึกคดี
-          </Button>
+          <Link to="/">
+            <Button className="bg-purple-600 hover:bg-purple-700">
+              บันทึกคดี
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
