@@ -91,7 +91,12 @@ const ClaimHubClientPortal = () => {
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="font-medium">นัดพบทนายความ</div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-gray-500">นัดทนายความ</div>
+                      <div className="bg-white text-purple-600 border border-purple-200 text-xs px-4 py-1 rounded-lg inline-block">
+                        คดีหมายเลข 2024101
+                      </div>
+                    </div>
                     <div className="text-gray-500 mt-1">
                       15 มกราคม 2567 เวลา 10:00 น.
                     </div>
@@ -117,16 +122,23 @@ const ClaimHubClientPortal = () => {
                   {
                     date: "4 ม.ค. 2567",
                     title: "ยื่นเอกสารเพิ่มเติม",
+                    case: "2024101",
                     description: "ทนายได้ยื่นเอกสารประกอบคำฟ้องเพิ่มเติมแล้ว",
                   },
                   {
                     date: "2 ม.ค. 2567",
                     title: "รับทราบนัดหมาย",
+                    case: "2024101",
                     description: "กำหนดนัดพบทนายเพื่อเตรียมเอกสารเพิ่มเติม",
                   },
                 ].map((update, i) => (
                   <div key={i} className="p-4 border rounded-lg">
-                    <div className="text-sm text-gray-500">{update.date}</div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-gray-500">{update.date}</div>
+                      <div className="bg-white text-purple-600 border border-purple-200 text-xs px-4 py-1 rounded-lg inline-block">
+                        คดีหมายเลข {update.case}
+                      </div>
+                    </div>
                     <div className="font-medium mt-1">{update.title}</div>
                     <div className="text-gray-600 mt-1">
                       {update.description}
