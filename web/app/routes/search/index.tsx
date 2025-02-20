@@ -1,5 +1,4 @@
-import { Header } from "~/components/common/header";
-import type { Route } from "./+types/home";
+import type { Route } from "../+types/home";
 import MassLitigationMatcher from "~/components/mass-litigation-matcher";
 
 export function meta({}: Route.MetaArgs) {
@@ -12,7 +11,6 @@ export function meta({}: Route.MetaArgs) {
 export default function Evidence() {
   return (
     <div>
-      <Header />
       <MassLitigationMatcher />
     </div>
   );

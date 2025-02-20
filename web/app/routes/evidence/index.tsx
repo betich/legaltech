@@ -1,5 +1,5 @@
 import EvidenceUpload from "~/components/evidence-upload";
-import type { Route } from "./+types/home";
+import type { Route } from "../+types/home";
 import { Header } from "~/components/common/header";
 
 export function meta({}: Route.MetaArgs) {

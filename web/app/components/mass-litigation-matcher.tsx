@@ -11,31 +11,33 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+const defaultCaseCriteria = [
+  {
+    id: 1,
+    title: "ผู้ได้รับผลกระทบจากมลพิษทางอากาศ",
+    requirements: [
+      "อาศัยในพื้นที่รัศมี 5 กม. จากโรงงาน",
+      "มีอาการทางระบบหายใจในช่วง 2 ปีที่ผ่านมา",
+      "มีหลักฐานทางการแพทย์",
+    ],
+    currentMembers: 156,
+    status: "กำลังรวบรวม",
+  },
+  {
+    id: 2,
+    title: "ผู้เสียหายจากการละเมิดข้อมูลส่วนบุคคล",
+    requirements: [
+      "เป็นลูกค้าของบริษัท X ในช่วงปี 2566",
+      "พบการใช้ข้อมูลโดยไม่ได้รับอนุญาต",
+      "มีหลักฐานความเสียหาย",
+    ],
+    currentMembers: 892,
+    status: "เปิดรับสมาชิก",
+  },
+];
+
 const MassLitigationMatcher = () => {
-  const caseCriteria = [
-    {
-      id: 1,
-      title: "ผู้ได้รับผลกระทบจากมลพิษทางอากาศ",
-      requirements: [
-        "อาศัยในพื้นที่รัศมี 5 กม. จากโรงงาน",
-        "มีอาการทางระบบหายใจในช่วง 2 ปีที่ผ่านมา",
-        "มีหลักฐานทางการแพทย์",
-      ],
-      currentMembers: 156,
-      status: "กำลังรวบรวม",
-    },
-    {
-      id: 2,
-      title: "ผู้เสียหายจากการละเมิดข้อมูลส่วนบุคคล",
-      requirements: [
-        "เป็นลูกค้าของบริษัท X ในช่วงปี 2566",
-        "พบการใช้ข้อมูลโดยไม่ได้รับอนุญาต",
-        "มีหลักฐานความเสียหาย",
-      ],
-      currentMembers: 892,
-      status: "เปิดรับสมาชิก",
-    },
-  ];
+  const [caseCriteria, setCaseCriteria] = useState(defaultCaseCriteria);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -46,7 +48,6 @@ const MassLitigationMatcher = () => {
             <ArrowLeft className="h-5 w-5" />
             <span>กลับ</span>
           </Link>
-          
         </div>
       </header>
 
@@ -125,9 +126,11 @@ const MassLitigationMatcher = () => {
                     </div>
 
                     <div className="mt-4 flex justify-end">
-                      <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-                        ตรวจสอบคุณสมบัติ
-                      </button>
+                      <Link to={`/`}>
+                        <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                          เข้าร่วมคดีหมู่
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 ))}
