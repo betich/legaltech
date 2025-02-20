@@ -9,4 +9,5 @@ export default [
   // route("evidence/:id", "routes/matcher/[id].tsx"),
   // route("search/:id", "routes/matcher/[id].tsx"),
   route("lawyer", "routes/lawyer.tsx"),
+  route("case", "routes/case.tsx"),
 ] satisfies RouteConfig;
