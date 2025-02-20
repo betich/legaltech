@@ -169,6 +169,13 @@ const EvidenceUpload = () => {
               </CardContent>
             </Card>
           )}
+
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-white bg-purple-600 px-6 py-3 hover:bg-purple-700 rounded-lg justify-center"
+          >
+            <span>ส่งหลักฐาน</span>
+          </Link>
         </div>
       </div>
     </div>
