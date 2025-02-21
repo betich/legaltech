@@ -138,10 +138,10 @@ const CaseEvidenceViewer = () => {
                     <List className="h-4 w-4" />
                   </button>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                <Link to="/lawyer/uploads" className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
                   <Upload className="h-4 w-4" />
                   <span>อัพโหลดหลักฐาน</span>
-                </button>
+                </Link>
               </div>
             </div>
 

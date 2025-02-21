@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"; // Import Link
 const ClaimDashboard = () => {
   const stats = [
     { title: "คดีทั้งหมด", value: "245", subtitle: "อัพเดทล่าสุด" },
-    { title: "คดีที่กำลังดำเนินการ", value: "182", subtitle: "ต้องดำเนินการ" },
+    { title: "คดีที่กำลังดำเนินการ", value: "3", subtitle: "ต้องดำเนินการ" },
     { title: "นัดหมายวันนี้", value: "8", subtitle: "การนัดหมาย" },
   ];
 

@@ -10,7 +10,8 @@ export default [
   route("lawyer", "routes/lawyer/index.tsx"),
   route("lawyer/search1", "routes/lawyer-search1.tsx"),
   route("lawyer/search2", "routes/lawyer-search2.tsx"),
-  route("lawyer/search3", "routes/lawyer-search3.tsx"), // Ensure this line is present
+  route("lawyer/search3", "routes/lawyer-search3.tsx"), 
+  route("lawyer/uploads", "routes/lawyer-upload.tsx"), 
   // case
   route("case", "routes/case/index.tsx"),
   route("case/:id", "routes/case/[id].tsx"),
