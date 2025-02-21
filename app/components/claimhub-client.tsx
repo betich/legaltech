@@ -5,7 +5,6 @@ import {
   PhoneCall,
   MessageCircle,
   Upload,
-  Plus,
   SearchIcon,
   PlusIcon,
 } from "lucide-react";

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { MessageCircle, Users, AlertCircle, CheckCircle, XCircle, FileText, Link, PlusCircle } from 'lucide-react';
+import { Users, AlertCircle, CheckCircle, PlusCircle } from "lucide-react";
 
 interface Chat {
   id: string;
@@ -24,16 +24,16 @@ const CaseClassificationManager = () => {
       keyPoints: [
         "ได้รับผลกระทบจากมลพิษทางอากาศ",
         "อาศัยในรัศมี 3 กม. จากโรงงาน",
-        "มีอาการหอบหืดตั้งแต่ปี 2566"
+        "มีอาการหอบหืดตั้งแต่ปี 2566",
       ],
       potentialMatches: [
         {
           caseId: "ENV2024-001",
           matchScore: 85,
-          description: "คดีมลพิษทางอากาศ - โรงงานภาคตะวันออก"
-        }
+          description: "คดีมลพิษทางอากาศ - โรงงานภาคตะวันออก",
+        },
       ],
-      status: "pending"
+      status: "pending",
     },
     {
       id: "chat_2",
@@ -42,11 +42,11 @@ const CaseClassificationManager = () => {
       keyPoints: [
         "ถูกละเมิดข้อมูลส่วนบุคคล",
         "พบการใช้ข้อมูลโดยไม่ได้รับอนุญาต",
-        "เกิดความเสียหายทางการเงิน"
+        "เกิดความเสียหายทางการเงิน",
       ],
       potentialMatches: [],
-      status: "new_case"
-    }
+      status: "new_case",
+    },
   ]);
 
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
@@ -59,7 +59,9 @@ const CaseClassificationManager = () => {
         <div className="flex items-center justify-between px-6 py-3">
           <div className="flex items-center">
             <div className="text-xl font-bold text-purple-600">ClaimHub</div>
-            <div className="ml-2 text-sm font-smeibold text-gray-500">for admin</div>
+            <div className="ml-2 text-sm font-smeibold text-gray-500">
+              for admin
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <Users className="h-5 w-5 text-gray-500" />
@@ -124,14 +126,18 @@ const CaseClassificationManager = () => {
                     >
                       <div className="flex items-center justify-between">
                         <div className="font-medium">{chat.clientName}</div>
-                        {chat.status === 'pending' ? (
-                          <span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full">รอตรวจสอบ</span>
+                        {chat.status === "pending" ? (
+                          <span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full">
+                            รอตรวจสอบ
+                          </span>
                         ) : (
-                          <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">คดีใหม่</span>
+                          <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">
+                            คดีใหม่
+                          </span>
                         )}
                       </div>
                       <div className="text-sm text-gray-500 mt-1">
-                        {new Date(chat.timestamp).toLocaleString('th-TH')}
+                        {new Date(chat.timestamp).toLocaleString("th-TH")}
                       </div>
                     </div>
                   ))}
@@ -149,9 +155,14 @@ const CaseClassificationManager = () => {
                   <div className="space-y-6">
                     {/* Client Info */}
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <div className="font-medium text-lg">{selectedChat.clientName}</div>
+                      <div className="font-medium text-lg">
+                        {selectedChat.clientName}
+                      </div>
                       <div className="text-sm text-gray-500">
-                        บันทึกเมื่อ: {new Date(selectedChat.timestamp).toLocaleString('th-TH')}
+                        บันทึกเมื่อ:{" "}
+                        {new Date(selectedChat.timestamp).toLocaleString(
+                          "th-TH"
+                        )}
                       </div>
                     </div>
 
@@ -176,8 +187,12 @@ const CaseClassificationManager = () => {
                           <div key={index} className="p-4 border rounded-lg">
                             <div className="flex items-center justify-between">
                               <div>
-                                <div className="font-medium">{match.description}</div>
-                                <div className="text-sm text-gray-500">รหัสคดี: {match.caseId}</div>
+                                <div className="font-medium">
+                                  {match.description}
+                                </div>
+                                <div className="text-sm text-gray-500">
+                                  รหัสคดี: {match.caseId}
+                                </div>
                               </div>
                               <div className="text-lg font-bold text-purple-600">
                                 {match.matchScore}% ตรงกัน
@@ -198,8 +213,10 @@ const CaseClassificationManager = () => {
                       <div>
                         <div className="font-medium mb-2">การวิเคราะห์</div>
                         <div className="p-4 border rounded-lg">
-                          <div className="text-gray-600">ไม่พบคดีที่เกี่ยวข้อง - แนะนำให้สร้างคดีใหม่</div>
-                          <button 
+                          <div className="text-gray-600">
+                            ไม่พบคดีที่เกี่ยวข้อง - แนะนำให้สร้างคดีใหม่
+                          </div>
+                          <button
                             onClick={() => setShowNewCaseForm(true)}
                             className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
                           >
@@ -268,7 +285,7 @@ const CaseClassificationManager = () => {
                     />
                   </div>
                   <div className="flex justify-end gap-2">
-                    <button 
+                    <button
                       onClick={() => setShowNewCaseForm(false)}
                       className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                     >
