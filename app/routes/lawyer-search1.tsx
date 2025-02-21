@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { 
   Search, 
@@ -27,10 +28,10 @@ const CaseEvidenceViewer = () => {
       <header className="bg-white shadow-sm fixed w-full z-10">
         <div className="flex items-center justify-between px-6 py-3">
           <div className="flex items-center space-x-4">
-            <button className="flex items-center gap-2 text-gray-600">
+            <Link to="/lawyer" className="flex items-center gap-2 text-gray-600">
               <ChevronLeft className="h-5 w-5" />
               <span>กลับไปหน้าคดี</span>
-            </button>
+            </Link>
             <div className="text-xl font-bold text-purple-600 ml-4">คดีหมายเลข 2024001</div>
           </div>
           <div className="flex items-center space-x-4">
