@@ -14,4 +14,6 @@ export default [
   // evidence
   route("evidence", "routes/evidence/index.tsx"),
   // route("evidence/:id", "routes/matcher/[id].tsx"),
+  // admin
+  route("admin", "routes/admin/admin.tsx"),
 ] satisfies RouteConfig;
