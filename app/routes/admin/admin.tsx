@@ -57,7 +57,10 @@ const CaseClassificationManager = () => {
       {/* Header */}
       <header className="bg-white shadow-sm fixed w-full z-10">
         <div className="flex items-center justify-between px-6 py-3">
-          <div className="text-xl font-bold text-purple-600">ClaimHub</div>
+          <div className="flex items-center">
+            <div className="text-xl font-bold text-purple-600">ClaimHub</div>
+            <div className="ml-2 text-sm font-smeibold text-gray-500">for admin</div>
+          </div>
           <div className="flex items-center space-x-4">
             <Users className="h-5 w-5 text-gray-500" />
           </div>
