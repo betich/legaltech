@@ -8,6 +8,7 @@ export default [
   route("claim", "routes/claim.tsx"),
   // lawyer
   route("lawyer", "routes/lawyer/index.tsx"),
+  route("lawyer/search", "routes/lawyer-search.tsx"), // Add this line
   // case
   route("case", "routes/case/index.tsx"),
   route("case/:id", "routes/case/[id].tsx"),
