@@ -1,0 +1,8 @@
+{
+  "framework": "react-router",
+  "build": {},
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
+}
