@@ -1,5 +1,6 @@
 import { Calendar, Clock } from "lucide-react";
 import { Card, CardContent } from "~/components/ui/card";
+import { Link } from "react-router-dom"; // Import Link
 
 const ClaimDashboard = () => {
   const stats = [
@@ -10,22 +11,25 @@ const ClaimDashboard = () => {
 
   const recentClaims = [
     {
-      id: "2024101",
+      id: "2024001",
       date: "15 ม.ค. 2567",
       users: "32 ราย",
       status: "อัพเดทเมื่อ 2 ชั่วโมงที่แล้ว",
+      link: "/lawyer/search1"
     },
     {
-      id: "2024102",
+      id: "2024002",
       date: "15 ม.ค. 2567",
       users: "32 ราย",
       status: "อัพเดทเมื่อ 2 ชั่วโมงที่แล้ว",
+      link: "/lawyer/search2"
     },
     {
-      id: "2024103",
+      id: "2024003",
       date: "15 ม.ค. 2567",
       users: "32 ราย",
       status: "อัพเดทเมื่อ 2 ชั่วโมงที่แล้ว",
+      link: "/lawyer/search3"
     },
   ];
 
@@ -37,7 +41,7 @@ const ClaimDashboard = () => {
       <div className="flex items-center justify-between mb-6">
         <div className="flex gap-2 items-center">
           <h1 className="text-xl font-semibold text-purple-600">ClaimHub</h1>
-          <p className="text-sm font-smeibold text-gray-500">for lawyers</p>
+          <p className="text-sm font-semibold text-gray-500">for lawyers</p>
         </div>
         {/* <div className="flex items-center gap-4">
           <button className="p-2 rounded-full hover:bg-gray-100">
@@ -94,54 +98,53 @@ const ClaimDashboard = () => {
           <h2 className="text-lg font-semibold mb-4">รายการคดีล่าสุด</h2>
           <div className="space-y-4">
             {recentClaims.map((claim) => (
-              <div
-                key={claim.id}
-                className="flex items-center justify-between p-4 border rounded-lg"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-2 bg-purple-50 rounded">
-                    <svg
-                      className="w-6 h-6 text-purple-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
+              <Link to={claim.link} key={claim.id} className="block">
+                <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 bg-purple-50 rounded">
+                      <svg
+                        className="w-6 h-6 text-purple-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-medium">คดีหมายเลข {claim.id}</h3>
+                      <p className="text-sm text-gray-500">{claim.status}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-medium">คดีหมายเลข {claim.id}</h3>
-                    <p className="text-sm text-gray-500">{claim.status}</p>
+                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-1">
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      {claim.users}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {claim.date}
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                    {claim.users}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {claim.date}
-                  </div>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </CardContent>
