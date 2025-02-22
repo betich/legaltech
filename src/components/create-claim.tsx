@@ -36,7 +36,7 @@ const CreateClaimForm = () => {
   return (
     <div className="max-w-4xl pt-24 mx-auto p-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold text-purple-600">สร้างคดีใหม่</h1>
+        <h1 className="text-2xl font-semibold text-indigo-600">สร้างคดีใหม่</h1>
         <p className="text-gray-500">กรอกข้อมูลเพื่อเริ่มต้นคดีแบบกลุ่ม</p>
       </div>
 
@@ -175,7 +175,7 @@ const CreateClaimForm = () => {
         {/* Submit Button */}
         <div className="flex justify-end gap-4">
           <Link href="/client">
-            <Button className="bg-purple-600 text-white hover:bg-purple-700">
+            <Button className="bg-indigo-600 text-white hover:bg-indigo-700">
               บันทึกคดี
             </Button>
           </Link>

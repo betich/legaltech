@@ -40,7 +40,7 @@ const ClaimDashboard = () => {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex gap-2 items-center">
-          <h1 className="text-xl font-semibold text-purple-600">ClaimHub</h1>
+          <h1 className="text-xl font-semibold text-indigo-600">ClaimHub</h1>
           <p className="text-sm font-semibold text-gray-500">for lawyers</p>
         </div>
         {/* <div className="flex items-center gap-4">
@@ -101,9 +101,9 @@ const ClaimDashboard = () => {
               <Link href={claim.link} key={claim.id} className="block">
                 <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                   <div className="flex items-center gap-4">
-                    <div className="p-2 bg-purple-50 rounded">
+                    <div className="p-2 bg-indigo-50 rounded">
                       <svg
-                        className="w-6 h-6 text-purple-600"
+                        className="w-6 h-6 text-indigo-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

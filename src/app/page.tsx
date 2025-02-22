@@ -66,7 +66,7 @@ const LoginPage = ({
               กลับ
             </Button>
           </div>
-          <CardTitle className="text-xl text-center text-purple-600">
+          <CardTitle className="text-xl text-center text-indigo-600">
             เข้าสู่ระบบสำหรับ{userType}
           </CardTitle>
         </CardHeader>
@@ -92,13 +92,13 @@ const LoginPage = ({
             <TabsContent value="passkey">
               <div className="space-y-4 text-center">
                 <div className="p-6">
-                  <Fingerprint className="w-16 h-16 mx-auto text-purple-600 mb-4" />
+                  <Fingerprint className="w-16 h-16 mx-auto text-indigo-600 mb-4" />
                   <p className="text-gray-600 mb-4">
                     เข้าสู่ระบบด้วย Passkey เพื่อความปลอดภัยที่มากขึ้น
                   </p>
                 </div>
                 <Button
-                  className="w-full text-white bg-purple-600 hover:bg-purple-700"
+                  className="w-full text-white bg-indigo-600 hover:bg-indigo-700"
                   onClick={handlePasskeyLogin}
                 >
                   <Fingerprint className="w-4 h-4 mr-2" />
@@ -108,7 +108,7 @@ const LoginPage = ({
                   ยังไม่ได้ตั้งค่า Passkey?
                   <a
                     href="#"
-                    className="text-purple-600 hover:text-purple-700 ml-1"
+                    className="text-indigo-600 hover:text-indigo-700 ml-1"
                   >
                     ตั้งค่าตอนนี้
                   </a>
@@ -142,7 +142,7 @@ const LoginPage = ({
                     />
                     <span>จดจำฉัน</span>
                   </label>
-                  <a href="#" className="text-purple-600 hover:text-purple-700">
+                  <a href="#" className="text-indigo-600 hover:text-indigo-700">
                     ลืมรหัสผ่าน?
                   </a>
                 </div>
@@ -160,7 +160,7 @@ const LoginPage = ({
                         break;
                     }
                   }}
-                  className="w-full text-white bg-purple-600 hover:bg-purple-700"
+                  className="w-full text-white bg-indigo-600 hover:bg-indigo-700"
                 >
                   เข้าสู่ระบบด้วยอีเมล
                 </Button>
@@ -188,8 +188,8 @@ const Portal = () => {
       type: "ทนายความ",
       icon: GavelIcon,
       description: "สำหรับทนายความที่ดูแลคดีความ",
-      color: "bg-purple-50",
-      iconColor: "text-purple-600",
+      color: "bg-indigo-50",
+      iconColor: "text-indigo-600",
     },
     {
       type: "ผู้ดูแลระบบ",
@@ -213,7 +213,7 @@ const Portal = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-purple-600 mb-2">ClaimHub</h1>
+          <h1 className="text-3xl font-bold text-indigo-600 mb-2">ClaimHub</h1>
           <p className="text-gray-600">เลือกประเภทผู้ใช้งานเพื่อเข้าสู่ระบบ</p>
         </div>
 
@@ -221,7 +221,7 @@ const Portal = () => {
           {userTypes.map((user) => (
             <Card
               key={user.type}
-              className="hover:border-purple-200 transition-all cursor-pointer"
+              className="hover:border-indigo-200 transition-all cursor-pointer"
               onClick={() => setSelectedUserType(user.type)}
             >
               <CardContent className="p-6 text-center">
@@ -240,7 +240,7 @@ const Portal = () => {
         <div className="text-center mt-8 text-sm text-gray-500">
           <p>
             ยังไม่มีบัญชีผู้ใช้?{" "}
-            <a href="#" className="text-purple-600 hover:text-purple-700">
+            <a href="#" className="text-indigo-600 hover:text-indigo-700">
               ลงทะเบียนใช้งาน
             </a>
           </p>

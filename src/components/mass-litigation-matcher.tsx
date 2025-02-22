@@ -104,10 +104,17 @@ const MassLitigationMatcher = () => {
 
     // Simulate bot response
     setTimeout(() => {
+      const randomCase =
+        caseCriteria[Math.floor(Math.random() * caseCriteria.length)];
+      const similarityScore = Math.floor(Math.random() * 101);
       setMessages((prev) => [
         ...prev,
         {
-          text: "ขอบคุณสำหรับคำถาม เราจะช่วยคุณค้นหาคดีที่เหมาะสมให้ค่ะ",
+          text: `ขอบคุณสำหรับคำถาม เราขอแนะนำคดี "${
+            randomCase.title
+          }" ที่มีคุณสมบัติดังนี้: ${randomCase.requirements.join(
+            ", "
+          )} (ความเหมือน: ${similarityScore}%)`,
           isUser: false,
         },
       ]);
@@ -156,11 +163,11 @@ const MassLitigationMatcher = () => {
                 />
               </div>
               <div className="flex gap-2 mt-4">
-                <button className="flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-600 rounded-lg">
+                <button className="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg">
                   <Filter className="h-4 w-4" />
                   <span>กรองตามประเภท</span>
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-600 rounded-lg">
+                <button className="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg">
                   <AlertCircle className="h-4 w-4" />
                   <span>สถานะการรับสมัคร</span>
                 </button>
@@ -196,7 +203,7 @@ const MassLitigationMatcher = () => {
                     .map((caseGroup) => (
                       <div
                         key={caseGroup.id}
-                        className="p-4 border rounded-lg hover:border-purple-300 transition-colors"
+                        className="p-4 border rounded-lg hover:border-indigo-300 transition-colors"
                       >
                         <div className="flex justify-between items-start">
                           <div>
@@ -208,7 +215,7 @@ const MassLitigationMatcher = () => {
                               <span className="text-sm text-gray-600">
                                 {caseGroup.currentMembers} สมาชิก
                               </span>
-                              <span className="text-sm text-purple-600 font-medium">
+                              <span className="text-sm text-indigo-600 font-medium">
                                 • {caseGroup.status}
                               </span>
                             </div>
@@ -217,7 +224,7 @@ const MassLitigationMatcher = () => {
                         </div>
 
                         {caseGroup.matchScore !== null && (
-                          <div className="text-lg mt-4 font-bold text-purple-600">
+                          <div className="text-lg mt-4 font-bold text-indigo-600">
                             {caseGroup.matchScore}% ตรงกัน
                           </div>
                         )}
@@ -243,7 +250,7 @@ const MassLitigationMatcher = () => {
 
                         <div className="mt-4 flex justify-end">
                           <Link href={`/client`}>
-                            <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                            <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                               เข้าร่วมคดีหมู่
                             </button>
                           </Link>
@@ -260,7 +267,7 @@ const MassLitigationMatcher = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <AlertCircle className="h-5 w-5 text-purple-600" />
+                  <AlertCircle className="h-5 w-5 text-indigo-600" />
                   <div className="pt-2">
                     <div className="font-medium">ต้องการความช่วยเหลือ?</div>
                     <div className="text-sm text-gray-600 mt-1">
@@ -268,7 +275,7 @@ const MassLitigationMatcher = () => {
                     </div>
                   </div>
                 </div>
-                <button className="px-4 py-2 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors">
+                <button className="px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition-colors">
                   ติดต่อเรา
                 </button>
               </div>
@@ -282,12 +289,12 @@ const MassLitigationMatcher = () => {
         {!showChatbot ? (
           <Button
             onClick={() => setShowChatbot(true)}
-            className="h-12 w-12 rounded-full bg-purple-600 hover:bg-purple-700 flex items-center justify-center"
+            className="h-12 w-12 rounded-full bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center"
           >
             <MessageCircle className="h-6 w-6 text-white" />
           </Button>
         ) : (
-          <Card className="w-80">
+          <Card className="w-80 bg-white">
             <CardHeader className="flex flex-row items-center justify-between p-4">
               <CardTitle className="text-lg">ผู้ช่วยค้นหาคดี</CardTitle>
               <Button
@@ -310,7 +317,7 @@ const MassLitigationMatcher = () => {
                     <div
                       className={`max-w-[80%] rounded-lg p-3 ${
                         message.isUser
-                          ? "bg-purple-600 text-white"
+                          ? "bg-indigo-600 text-white"
                           : "bg-gray-100 text-gray-800"
                       }`}
                     >

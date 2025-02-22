@@ -62,7 +62,7 @@ const EvidenceUpload = () => {
             <ArrowLeft className="h-5 w-5" />
             <span>กลับ</span>
           </Link>
-          <h1 className="ml-4 text-xl font-bold text-purple-600">
+          <h1 className="ml-4 text-xl font-bold text-indigo-600">
             อัปโหลดหลักฐาน
           </h1>
         </div>
@@ -80,7 +80,7 @@ const EvidenceUpload = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {evidenceTypes.map((type, index) => (
                   <div key={index} className="p-4 border rounded-lg bg-gray-50">
-                    <type.icon className="h-6 w-6 text-purple-600 mb-2" />
+                    <type.icon className="h-6 w-6 text-indigo-600 mb-2" />
                     <div className="font-medium">{type.label}</div>
                     <div className="text-sm text-gray-500">
                       รองรับไฟล์ {type.formats}
@@ -98,7 +98,7 @@ const EvidenceUpload = () => {
                 className={`border-2 border-dashed rounded-lg p-8 text-center flex flex-col gap-4
                   ${
                     dragActive
-                      ? "border-purple-500 bg-purple-50"
+                      ? "border-indigo-500 bg-indigo-50"
                       : "border-gray-300"
                   }`}
                 onDragEnter={() => setDragActive(true)}
@@ -106,7 +106,7 @@ const EvidenceUpload = () => {
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={() => setDragActive(false)}
               >
-                <Upload className="h-8 w-8 text-purple-600 mx-auto mb-4" />
+                <Upload className="h-8 w-8 text-indigo-600 mx-auto mb-4" />
                 <div className="font-medium mb-2">ลากไฟล์มาวางที่นี่ หรือ</div>
                 <input
                   type="file"
@@ -117,7 +117,7 @@ const EvidenceUpload = () => {
                 />
                 <label
                   htmlFor="file-upload"
-                  className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 cursor-pointer grow-0"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 cursor-pointer grow-0"
                 >
                   เลือกไฟล์
                 </label>
@@ -130,11 +130,11 @@ const EvidenceUpload = () => {
 
           {/* Quick Upload Buttons */}
           <div className="flex gap-4 justify-center">
-            <button className="flex items-center gap-2 px-6 py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100">
+            <button className="flex items-center gap-2 px-6 py-3 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100">
               <Camera className="h-5 w-5" />
               <span>ถ่ายภาพ</span>
             </button>
-            <button className="flex items-center gap-2 px-6 py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100">
+            <button className="flex items-center gap-2 px-6 py-3 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100">
               <Video className="h-5 w-5" />
               <span>ถ่ายวิดีโอ</span>
             </button>
@@ -154,7 +154,7 @@ const EvidenceUpload = () => {
                       className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                     >
                       <div className="flex items-center gap-3">
-                        <File className="h-5 w-5 text-purple-600" />
+                        <File className="h-5 w-5 text-indigo-600" />
                         <div>
                           <div className="font-medium">{file.name}</div>
                           <div className="text-sm text-gray-500">
@@ -177,7 +177,7 @@ const EvidenceUpload = () => {
 
           <Link
             href="/lawyer"
-            className="flex items-center gap-2 text-white bg-purple-600 px-6 py-3 hover:bg-purple-700 rounded-lg justify-center"
+            className="flex items-center gap-2 text-white bg-indigo-600 px-6 py-3 hover:bg-indigo-700 rounded-lg justify-center"
           >
             <span>ส่งหลักฐาน</span>
           </Link>

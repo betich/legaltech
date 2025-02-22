@@ -52,15 +52,15 @@ const CostBreakdown = () => {
       <Card className="mb-6">
         <CardContent className="p-6">
           <h2 className="text-lg mb-6">ค่าใช้จ่ายในการฟ้องแบบกลุ่ม</h2>
-          <div className="bg-purple-50 rounded-lg p-6 mb-6">
+          <div className="bg-indigo-50 rounded-lg p-6 mb-6">
             <div className="flex justify-between items-center">
               <div>
                 <div className="text-gray-600 mb-2">คดีหมายเลข 2024101</div>
-                <div className="text-4xl font-bold text-purple-600">
+                <div className="text-4xl font-bold text-indigo-600">
                   ฿100,600
                 </div>
               </div>
-              <div className="text-purple-600 text-4xl">฿</div>
+              <div className="text-indigo-600 text-4xl">฿</div>
             </div>
           </div>
         </CardContent>
@@ -80,7 +80,7 @@ const CostBreakdown = () => {
                   <span>{expense.title}</span>
                 </div>
                 <div className="text-right">
-                  <div className="text-purple-600 font-medium">
+                  <div className="text-indigo-600 font-medium">
                     ฿{expense.amount.toLocaleString()}
                   </div>
                   {expense.rate && (
@@ -105,7 +105,7 @@ const CostBreakdown = () => {
                 className="flex items-center justify-between p-4 border rounded-lg"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+                  <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
                     {participant.initial}
                   </div>
                   <div>
@@ -116,7 +116,7 @@ const CostBreakdown = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-purple-600 font-medium">
+                  <div className="text-indigo-600 font-medium">
                     ฿{participant.share.toLocaleString()}
                   </div>
                   <div className="text-sm text-gray-500">

@@ -14,10 +14,10 @@ export default async function Page({
     <>
       <BackHeader />
       {/* <h1>Dynamic Page for ID: {id}</h1> */}
-      <div className="flex flex-col sm:flex-row items-center justify-between bg-purple-50 rounded-lg pt-24 pb-16 px-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between bg-indigo-50 rounded-lg pt-24 pb-16 px-8">
         <div>
           <div className="font-medium text-lg">คดีหมายเลข 2024101</div>
-          <div className="text-purple-600 font-medium mt-1">กำลังดำเนินการ</div>
+          <div className="text-indigo-600 font-medium mt-1">กำลังดำเนินการ</div>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center gap-2">
@@ -28,7 +28,7 @@ export default async function Page({
           </div>
           <Link
             href="/case/1/evidence"
-            className="text-white flex items-center gap-2 rounded-md px-6 py-2 bg-purple-600 hover:bg-purple-700"
+            className="text-white flex items-center gap-2 rounded-md px-6 py-2 bg-indigo-600 hover:bg-indigo-700"
           >
             <UploadCloud className="h-4 w-4" />
             <span>อัปโหลดหลักฐาน</span>

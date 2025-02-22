@@ -60,7 +60,7 @@ const CaseClassificationManager = () => {
       <header className="bg-white shadow-sm fixed w-full z-10">
         <div className="flex items-center justify-between px-6 py-3">
           <div className="flex items-center">
-            <div className="text-xl font-bold text-purple-600">ClaimHub</div>
+            <div className="text-xl font-bold text-indigo-600">ClaimHub</div>
             <div className="ml-2 text-sm font-smeibold text-gray-500">
               for admin
             </div>
@@ -105,7 +105,7 @@ const CaseClassificationManager = () => {
                     <div className="text-sm text-gray-500">คดีใหม่</div>
                     <div className="text-2xl font-bold mt-2">3</div>
                   </div>
-                  <PlusCircle className="h-8 w-8 text-purple-500" />
+                  <PlusCircle className="h-8 w-8 text-indigo-500" />
                 </div>
               </CardContent>
             </Card>
@@ -124,7 +124,7 @@ const CaseClassificationManager = () => {
                     <div
                       key={chat.id}
                       onClick={() => setSelectedChat(chat)}
-                      className="p-3 border rounded-lg cursor-pointer hover:border-purple-300 transition-colors"
+                      className="p-3 border rounded-lg cursor-pointer hover:border-indigo-300 transition-colors"
                     >
                       <div className="flex items-center justify-between">
                         <div className="font-medium">{chat.clientName}</div>
@@ -133,7 +133,7 @@ const CaseClassificationManager = () => {
                             รอตรวจสอบ
                           </span>
                         ) : (
-                          <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">
+                          <span className="text-xs px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full">
                             คดีใหม่
                           </span>
                         )}
@@ -196,12 +196,12 @@ const CaseClassificationManager = () => {
                                   รหัสคดี: {match.caseId}
                                 </div>
                               </div>
-                              <div className="text-lg font-bold text-purple-600">
+                              <div className="text-lg font-bold text-indigo-600">
                                 {match.matchScore}% ตรงกัน
                               </div>
                             </div>
                             <div className="mt-4 flex gap-2">
-                              <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                              <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                                 เพิ่มในคดี
                               </button>
                               <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
@@ -220,7 +220,7 @@ const CaseClassificationManager = () => {
                           </div>
                           <button
                             onClick={() => setShowNewCaseForm(true)}
-                            className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                            className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
                           >
                             สร้างคดีใหม่
                           </button>
@@ -293,7 +293,7 @@ const CaseClassificationManager = () => {
                     >
                       ยกเลิก
                     </button>
-                    <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                    <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
                       สร้างคดี
                     </button>
                   </div>

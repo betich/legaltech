@@ -37,7 +37,7 @@ const CaseEvidenceViewer = () => {
               <ChevronLeft className="h-5 w-5" />
               <span>กลับไปหน้าคดี</span>
             </Link>
-            <div className="text-xl font-bold text-purple-600 ml-4">
+            <div className="text-xl font-bold text-indigo-600 ml-4">
               คดีหมายเลข 2024001
             </div>
           </div>
@@ -90,7 +90,7 @@ const CaseEvidenceViewer = () => {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Image className="h-4 w-4 text-purple-500" />
+                      <Image className="h-4 w-4 text-indigo-500" />
                       <span className="text-sm">รูปภาพ</span>
                     </div>
                     <span className="text-sm text-gray-500">24</span>
@@ -111,7 +111,7 @@ const CaseEvidenceViewer = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Play className="h-4 w-4 text-purple-500" />
+                      <Play className="h-4 w-4 text-indigo-500" />
                       <span className="text-sm">วิดีโอ</span>
                     </div>
                     <span className="text-sm text-gray-500">3</span>
@@ -131,7 +131,7 @@ const CaseEvidenceViewer = () => {
                   <input
                     type="text"
                     placeholder="ค้นหาหลักฐาน..."
-                    className="pl-10 pr-4 py-2 border rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="pl-10 pr-4 py-2 border rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
                 <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg">
@@ -160,7 +160,7 @@ const CaseEvidenceViewer = () => {
                 </div>
                 <Link
                   href="/lawyer/uploads"
-                  className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+                  className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                 >
                   <Upload className="h-4 w-4" />
                   <span>อัพโหลดหลักฐาน</span>
