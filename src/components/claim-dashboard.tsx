@@ -15,21 +15,21 @@ const ClaimDashboard = () => {
       date: "15 ม.ค. 2567",
       users: "32 ราย",
       status: "อัพเดทเมื่อ 2 ชั่วโมงที่แล้ว",
-      link: "/lawyer/search1",
+      link: "/lawyer/search",
     },
     {
       id: "2024002",
       date: "15 ม.ค. 2567",
       users: "32 ราย",
       status: "อัพเดทเมื่อ 2 ชั่วโมงที่แล้ว",
-      link: "/lawyer/search2",
+      link: "/lawyer/search",
     },
     {
       id: "2024003",
       date: "15 ม.ค. 2567",
       users: "32 ราย",
       status: "อัพเดทเมื่อ 2 ชั่วโมงที่แล้ว",
-      link: "/lawyer/search3",
+      link: "/lawyer/search",
     },
   ];
 
