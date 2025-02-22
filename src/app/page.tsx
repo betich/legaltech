@@ -23,7 +23,7 @@ const LoginPage = ({
   onBack: () => void;
 }) => {
   const router = useRouter();
-  const [loginMethod, setLoginMethod] = useState("traditional");
+  const [loginMethod, setLoginMethod] = useState("passkey");
 
   const handlePasskeyLogin = async () => {
     // This is where you would implement the actual WebAuthn/passkey logic
@@ -40,7 +40,6 @@ const LoginPage = ({
       // Handle the credential
 
       //  redirect
-
       switch (userType) {
         case "ลูกความ":
           router.push("/client");
@@ -72,15 +71,8 @@ const LoginPage = ({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="traditional" className="w-full">
+          <Tabs defaultValue="passkey" className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-4">
-              <TabsTrigger
-                value="traditional"
-                onClick={() => setLoginMethod("traditional")}
-              >
-                <Mail className="w-4 h-4 mr-2" />
-                อีเมล
-              </TabsTrigger>
               <TabsTrigger
                 value="passkey"
                 onClick={() => setLoginMethod("passkey")}
@@ -88,7 +80,41 @@ const LoginPage = ({
                 <Fingerprint className="w-4 h-4 mr-2" />
                 Passkey
               </TabsTrigger>
+              <TabsTrigger
+                value="traditional"
+                onClick={() => setLoginMethod("traditional")}
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                อีเมล
+              </TabsTrigger>
             </TabsList>
+
+            <TabsContent value="passkey">
+              <div className="space-y-4 text-center">
+                <div className="p-6">
+                  <Fingerprint className="w-16 h-16 mx-auto text-purple-600 mb-4" />
+                  <p className="text-gray-600 mb-4">
+                    เข้าสู่ระบบด้วย Passkey เพื่อความปลอดภัยที่มากขึ้น
+                  </p>
+                </div>
+                <Button
+                  className="w-full text-white bg-purple-600 hover:bg-purple-700"
+                  onClick={handlePasskeyLogin}
+                >
+                  <Fingerprint className="w-4 h-4 mr-2" />
+                  เข้าสู่ระบบด้วย Passkey
+                </Button>
+                <p className="text-sm text-gray-500 mt-4">
+                  ยังไม่ได้ตั้งค่า Passkey?
+                  <a
+                    href="#"
+                    className="text-purple-600 hover:text-purple-700 ml-1"
+                  >
+                    ตั้งค่าตอนนี้
+                  </a>
+                </p>
+              </div>
+            </TabsContent>
 
             <TabsContent value="traditional">
               <form
@@ -139,33 +165,6 @@ const LoginPage = ({
                   เข้าสู่ระบบด้วยอีเมล
                 </Button>
               </form>
-            </TabsContent>
-
-            <TabsContent value="passkey">
-              <div className="space-y-4 text-center">
-                <div className="p-6">
-                  <Fingerprint className="w-16 h-16 mx-auto text-purple-600 mb-4" />
-                  <p className="text-gray-600 mb-4">
-                    เข้าสู่ระบบด้วย Passkey เพื่อความปลอดภัยที่มากขึ้น
-                  </p>
-                </div>
-                <Button
-                  className="w-full text-white bg-purple-600 hover:bg-purple-700"
-                  onClick={handlePasskeyLogin}
-                >
-                  <Fingerprint className="w-4 h-4 mr-2" />
-                  เข้าสู่ระบบด้วย Passkey
-                </Button>
-                <p className="text-sm text-gray-500 mt-4">
-                  ยังไม่ได้ตั้งค่า Passkey?
-                  <a
-                    href="#"
-                    className="text-purple-600 hover:text-purple-700 ml-1"
-                  >
-                    ตั้งค่าตอนนี้
-                  </a>
-                </p>
-              </div>
             </TabsContent>
           </Tabs>
         </CardContent>
