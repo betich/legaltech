@@ -15,8 +15,8 @@ const ClaimHubClientPortal = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Say Hi */}
       <main className="relative pt-24">
-        <div className="from-indigo-900 relative to-orange-300 bg-gradient-to-b text-white py-12">
-          <div className="max-w-4xl relative z-10 mx-auto px-6">
+        <div className="from-indigo-900 relative to-orange-300 bg-gradient-to-b bg-fixed bg-center text-white py-12">
+          <div className="max-w-4xl relative mx-auto px-6">
             <h1 className="text-3xl font-bold">ยินดีต้อนรับสู่ ClaimHub</h1>
             <p className="mt-2 text-lg">
               ระบบการจัดการคดีที่ทันสมัยและง่ายต่อการใช้งาน
@@ -40,7 +40,7 @@ const ClaimHubClientPortal = () => {
             </div>
           </div>
           {/* dark filter */}
-          <div className="absolute inset-0 bg-black opacity-30 z-0"></div>
+          {/* <div className="absolute inset-0 bg-black opacity-30 z-0"></div> */}
         </div>
       </main>
 
