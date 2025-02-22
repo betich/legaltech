@@ -69,11 +69,10 @@ const ClaimHubClientPortal = () => {
                       </span>
                     </div>
                     <Link
-                      href="/evidence"
+                      href="/case/1"
                       className="text-white flex items-center gap-2 rounded-md px-6 py-2 bg-purple-600 hover:bg-purple-700"
                     >
-                      <Upload className="h-5 w-5 text-white" />
-                      <span>อัปโหลดหลักฐาน</span>
+                      <span>ดูเพิ่มเติม</span>
                     </Link>
                   </div>
                 </div>
