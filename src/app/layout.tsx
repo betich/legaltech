@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   weight: ["400", "500", "600", "700"],
+  subsets: ["latin", "thai"],
 });
 
 export const metadata: Metadata = {
