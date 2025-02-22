@@ -21,10 +21,10 @@ const ClaimHubClientPortal = () => {
             <p className="mt-2 text-lg">
               ระบบการจัดการคดีที่ทันสมัยและง่ายต่อการใช้งาน
             </p>
-            <div className="flex items-center gap-4 mt-4">
+            <div className="flex flex-col gap-2 sm:flex-row items-center sm:gap-4 mt-4">
               <Link
                 href="/search"
-                className="flex gap-2 items-center bg-white text-purple-600 px-6 py-2 rounded-md hover:bg-purple-50 transition-colors"
+                className="flex gap-2 w-full items-center bg-white text-purple-600 px-6 py-2 rounded-md hover:bg-purple-50 transition-colors"
               >
                 <SearchIcon className="h-5 w-5" />
                 <span>ค้นหาคดีของคุณ</span>
@@ -32,7 +32,7 @@ const ClaimHubClientPortal = () => {
               <span>หรือ</span>
               <Link
                 href="/claim"
-                className="flex gap-2 items-center bg-white text-purple-600 px-6 py-2 rounded-md hover:bg-purple-50 transition-colors"
+                className="flex gap-2 w-full items-center bg-white text-purple-600 px-6 py-2 rounded-md hover:bg-purple-50 transition-colors"
               >
                 <PlusIcon className="h-5 w-5" />
                 <span>สร้างคดีใหม่</span>
@@ -52,7 +52,7 @@ const ClaimHubClientPortal = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg">
+                <div className="flex flex-col sm:flex-row sm:items-start items-center justify-between p-4 bg-purple-50 rounded-lg">
                   <div>
                     <div className="font-medium text-lg">
                       คดีหมายเลข 2024101
@@ -61,7 +61,7 @@ const ClaimHubClientPortal = () => {
                       กำลังดำเนินการ
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-gray-400" />
                       <span className="text-sm text-gray-600">
@@ -148,7 +148,7 @@ const ClaimHubClientPortal = () => {
           </Card>
 
           {/* Quick Actions - Centered */}
-          <div className="flex justify-center gap-4 px-4">
+          <div className="flex justify-center gap-4 px-4 text-sm sm:text-base">
             <button className="flex items-center justify-center gap-2 px-8 py-3 bg-purple-50 text-purple-600 rounded-lg hover:bg-purple-100 transition-colors">
               <PhoneCall className="h-5 w-5" />
               <span>ติดต่อทนาย</span>

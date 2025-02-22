@@ -14,12 +14,12 @@ export default async function Page({
     <>
       <BackHeader />
       {/* <h1>Dynamic Page for ID: {id}</h1> */}
-      <div className="flex items-center justify-between bg-purple-50 rounded-lg pt-24 pb-16 px-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between bg-purple-50 rounded-lg pt-24 pb-16 px-8">
         <div>
           <div className="font-medium text-lg">คดีหมายเลข 2024101</div>
           <div className="text-purple-600 font-medium mt-1">กำลังดำเนินการ</div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4 text-gray-400" />
             <span className="text-sm text-gray-600">
