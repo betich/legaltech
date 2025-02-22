@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="bg-white shadow-sm fixed w-full z-10">
       <div className="flex items-center justify-between px-6 py-3">
-        <Link href="/" className="text-xl font-bold text-purple-600">
+        <Link href="/client" className="text-xl font-bold text-purple-600">
           ClaimHub
         </Link>
         <div className="flex items-center space-x-4">
