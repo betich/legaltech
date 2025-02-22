@@ -27,7 +27,7 @@ const ClaimHubClientPortal = () => {
                 className="flex gap-2 w-full sm:w-fit items-center bg-white text-purple-600 px-6 py-2 rounded-md hover:bg-purple-50 transition-colors"
               >
                 <SearchIcon className="h-5 w-5" />
-                <span>ค้นหาคดีของคุณ</span>
+                <span>ค้นหากลุ่มคดีที่ตรงกับคุณ</span>
               </Link>
               <span>หรือ</span>
               <Link
