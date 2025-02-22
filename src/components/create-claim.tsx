@@ -174,7 +174,7 @@ const CreateClaimForm = () => {
 
         {/* Submit Button */}
         <div className="flex justify-end gap-4">
-          <Link href="/claim">
+          <Link href="/client">
             <Button className="bg-purple-600 text-white hover:bg-purple-700">
               บันทึกคดี
             </Button>

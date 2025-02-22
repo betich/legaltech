@@ -18,11 +18,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { caseData, GroupCase } from "@/lib/cases";
 
+interface SearchCases extends GroupCase {
+  matchScore: number | null;
+}
+
 const MassLitigationMatcher = () => {
   const [caseCriteria, setCaseCriteria] = useState<GroupCase[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredCases, setFilteredCases] = useState<GroupCase[]>([]);
+  const [filteredCases, setFilteredCases] = useState<SearchCases[]>([]);
   const [showChatbot, setShowChatbot] = useState(false);
   const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
     [{ text: "สวัสดีค่ะ ฉันสามารถช่วยคุณค้นหาคดีที่เหมาะสมได้", isUser: false }]
@@ -37,7 +41,15 @@ const MassLitigationMatcher = () => {
         // Simulate API call
         await new Promise((resolve) => setTimeout(resolve, 1500));
         setCaseCriteria(caseData);
-        setFilteredCases(caseData);
+        setFilteredCases(
+          caseData.map(
+            (caseGroup) =>
+              ({
+                ...caseGroup,
+                matchScore: null,
+              } as SearchCases)
+          )
+        );
       } finally {
         setLoading(false);
       }
@@ -56,9 +68,27 @@ const MassLitigationMatcher = () => {
               req.toLowerCase().includes(searchQuery.toLowerCase())
             )
         );
-        setFilteredCases(filtered);
+        setFilteredCases(
+          filtered.map((caseGroup) => ({
+            ...caseGroup,
+            matchScore: Math.min(
+              Math.floor(
+                ((searchQuery.length * 4) /
+                  (caseGroup.title.length +
+                    caseGroup.requirements.join(" ").length)) *
+                  100
+              ),
+              100
+            ),
+          }))
+        );
       } else {
-        setFilteredCases(caseCriteria);
+        setFilteredCases(
+          caseCriteria.map((caseGroup) => ({
+            ...caseGroup,
+            matchScore: null,
+          }))
+        );
       }
     }, 300);
 
@@ -117,10 +147,9 @@ const MassLitigationMatcher = () => {
             </CardHeader>
             <CardContent>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="ค้นหาตามประเภทคดีหรือลักษณะความเสียหาย"
+                <MessageCircle className="h-6 w-6 absolute top-3 left-3 text-gray-400" />
+                <textarea
+                  placeholder="อธิบายหรือค้นหาตามประเภทคดีหรือลักษณะความเสียหาย"
                   className="w-full pl-10 pr-4 py-2 border rounded-lg"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -157,54 +186,70 @@ const MassLitigationMatcher = () => {
                     ไม่พบคดีที่ตรงกับการค้นหา
                   </div>
                 ) : (
-                  filteredCases.map((caseGroup) => (
-                    <div
-                      key={caseGroup.id}
-                      className="p-4 border rounded-lg hover:border-purple-300 transition-colors"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <div className="font-medium text-lg">
-                            {caseGroup.title}
-                          </div>
-                          <div className="flex items-center gap-2 mt-1">
-                            <Users className="h-4 w-4 text-gray-400" />
-                            <span className="text-sm text-gray-600">
-                              {caseGroup.currentMembers} สมาชิก
-                            </span>
-                            <span className="text-sm text-purple-600 font-medium">
-                              • {caseGroup.status}
-                            </span>
-                          </div>
-                        </div>
-                        <ChevronRight className="h-5 w-5 text-gray-400" />
-                      </div>
-
-                      <div className="mt-4">
-                        <div className="text-sm font-medium mb-2">
-                          คุณสมบัติที่ต้องการ:
-                        </div>
-                        <div className="space-y-2">
-                          {caseGroup.requirements.map((req, index) => (
-                            <div key={index} className="flex items-start gap-2">
-                              <CheckCircle className="h-4 w-4 text-green-500 mt-1" />
+                  filteredCases
+                    .slice(0, 10)
+                    .sort((a, b) =>
+                      a.matchScore && b.matchScore
+                        ? b?.matchScore - a?.matchScore // dsc
+                        : 0
+                    )
+                    .map((caseGroup) => (
+                      <div
+                        key={caseGroup.id}
+                        className="p-4 border rounded-lg hover:border-purple-300 transition-colors"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <div className="font-medium text-lg">
+                              {caseGroup.title}
+                            </div>
+                            <div className="flex items-center gap-2 mt-1">
+                              <Users className="h-4 w-4 text-gray-400" />
                               <span className="text-sm text-gray-600">
-                                {req}
+                                {caseGroup.currentMembers} สมาชิก
+                              </span>
+                              <span className="text-sm text-purple-600 font-medium">
+                                • {caseGroup.status}
                               </span>
                             </div>
-                          ))}
+                          </div>
+                          <ChevronRight className="h-5 w-5 text-gray-400" />
+                        </div>
+
+                        {caseGroup.matchScore !== null && (
+                          <div className="text-lg mt-4 font-bold text-purple-600">
+                            {caseGroup.matchScore}% ตรงกัน
+                          </div>
+                        )}
+
+                        <div className="mt-4">
+                          <div className="text-sm font-medium mb-2">
+                            คุณสมบัติที่ต้องการ:
+                          </div>
+                          <div className="space-y-2">
+                            {caseGroup.requirements.map((req, index) => (
+                              <div
+                                key={index}
+                                className="flex items-start gap-2"
+                              >
+                                <CheckCircle className="h-4 w-4 text-green-500 mt-1" />
+                                <span className="text-sm text-gray-600">
+                                  {req}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="mt-4 flex justify-end">
+                          <Link href={`/client`}>
+                            <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                              เข้าร่วมคดีหมู่
+                            </button>
+                          </Link>
                         </div>
                       </div>
-
-                      <div className="mt-4 flex justify-end">
-                        <Link href={`/client`}>
-                          <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-                            เข้าร่วมคดีหมู่
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  ))
+                    ))
                 )}
               </div>
             </CardContent>
