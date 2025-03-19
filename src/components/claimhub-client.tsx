@@ -78,6 +78,31 @@ const ClaimHubClientPortal = () => {
                     </Link>
                   </div>
                 </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-start items-center justify-between p-4 bg-orange-50 rounded-lg">
+                  <div>
+                    <div className="font-medium text-lg">
+                      คดีหมายเลข 2024108
+                    </div>
+                    <div className="!text-orange-600 font-medium mt-1">
+                      รอเลือกทนาย
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-gray-400" />
+                      <span className="text-sm text-gray-600">
+                        อัพเดทล่าสุด: 1 วันที่แล้ว
+                      </span>
+                    </div>
+                    <Link
+                      href="/case/2"
+                      className="text-white flex items-center gap-2 rounded-md px-6 py-2 bg-orange-600 hover:bg-orange-700"
+                    >
+                      <span>ดูเพิ่มเติม</span>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
