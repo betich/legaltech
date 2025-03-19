@@ -42,7 +42,7 @@ const LawyerCandidates = () => {
       <Header />
       <div className="max-w-3xl pt-16 mx-auto p-6">
         <BackHeader />
-        <Card className="mb-6">
+        <Card className="mb-6 pt-12">
           <CardContent className="p-6">
             <h2 className="text-lg mb-6">รายชื่อทนายความ</h2>
             <div className="bg-orange-50 rounded-lg p-6 mb-6">
