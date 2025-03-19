@@ -96,7 +96,7 @@ const ClaimHubClientPortal = () => {
                       </span>
                     </div>
                     <Link
-                      href="/case/2"
+                      href="/case/lawyer"
                       className="text-white flex items-center gap-2 rounded-md px-6 py-2 bg-orange-600 hover:bg-orange-700"
                     >
                       <span>ดูเพิ่มเติม</span>
