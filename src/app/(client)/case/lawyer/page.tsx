@@ -1,41 +1,57 @@
+"use client";
+import { useState } from "react";
 import { BackHeader } from "@/components/common/back-header";
 import { Header } from "@/components/common/header";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
+import Link from "next/link";
+
+interface Lawyer {
+  initial: string;
+  name: string;
+  status: string;
+}
+
+const lawyers: Lawyer[] = [
+  {
+    initial: "ก",
+    name: "กรวิทย์ เจริญสุข",
+    status: "ทนายความ",
+  },
+  {
+    initial: "ส",
+    name: "สมชาย วิริยะวงศ์",
+    status: "ทนายความ",
+  },
+  {
+    initial: "ป",
+    name: "ปิยะ ชินวัตร",
+    status: "ทนายความ",
+  },
+  {
+    initial: "ว",
+    name: "วรรณา สุขสมบูรณ์",
+    status: "ทนายความ",
+  },
+  {
+    initial: "ท",
+    name: "ทักษิณา ธนสาร",
+    status: "ทนายความ",
+  },
+  {
+    initial: "น",
+    name: "นภัสวรรณ พรมมา",
+    status: "ทนายความ",
+  },
+];
 
 const LawyerCandidates = () => {
-  const lawyers = [
-    {
-      initial: "ก",
-      name: "กรวิทย์ เจริญสุข",
-      status: "ทนายความ",
-    },
-    {
-      initial: "ส",
-      name: "สมชาย วิริยะวงศ์",
-      status: "ทนายความ",
-    },
-    {
-      initial: "ป",
-      name: "ปิยะ ชินวัตร",
-      status: "ทนายความ",
-    },
-    {
-      initial: "ว",
-      name: "วรรณา สุขสมบูรณ์",
-      status: "ทนายความ",
-    },
-    {
-      initial: "ท",
-      name: "ทักษิณา ธนสาร",
-      status: "ทนายความ",
-    },
-    {
-      initial: "น",
-      name: "นภัสวรรณ พรมมา",
-      status: "ทนายความ",
-    },
-  ];
+  const [selectedLawyer, setSelectedLawyer] = useState<number | null>(null);
+
+  const handleSelectLawyer = (index: number) => {
+    setSelectedLawyer(index);
+  };
 
   return (
     <div>
@@ -68,18 +84,32 @@ const LawyerCandidates = () => {
               {lawyers.map((lawyer, index) => (
                 <div
                   key={index}
-                  className="flex items-center p-4 border rounded-lg hover:bg-gray-50 cursor-pointer"
+                  className={`flex items-center p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200 ${
+                    selectedLawyer === index
+                      ? "bg-orange-50 border-orange-300"
+                      : ""
+                  }`}
+                  onClick={() => handleSelectLawyer(index)}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 text-xl">
+                  <div className="flex items-center gap-4 w-full">
+                    <div
+                      className={`w-12 h-12 rounded-full ${
+                        selectedLawyer === index
+                          ? "bg-orange-100"
+                          : "bg-orange-50"
+                      } flex items-center justify-center text-orange-600 text-xl`}
+                    >
                       {lawyer.initial}
                     </div>
-                    <div>
+                    <div className="flex-grow">
                       <div className="font-medium">{lawyer.name}</div>
                       <div className="text-sm text-gray-500">
                         {lawyer.status}
                       </div>
                     </div>
+                    {selectedLawyer === index && (
+                      <div className="w-4 h-4 rounded-full bg-orange-500"></div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -88,9 +118,22 @@ const LawyerCandidates = () => {
         </Card>
 
         <Card>
-          <CardContent className="p-6 text-center text-gray-600">
-            <p>กรุณาเลือกทนายความที่ต้องการปรึกษา</p>
-            <p>ท่านสามารถเลือกได้ 1 ท่าน</p>
+          <CardContent className="p-6">
+            <div className="text-center text-gray-600 mb-4">
+              <p>กรุณาเลือกทนายความที่ต้องการปรึกษา</p>
+              <p>ท่านสามารถเลือกได้ 1 ท่าน</p>
+            </div>
+            <div className="mt-4">
+              <Link href="/case/1">
+                <Button
+                  className="w-full py-3 bg-orange-500 text-white hover:bg-orange-600 disabled:bg-orange-200 disabled:text-gray-400"
+                  disabled={selectedLawyer === null}
+                  variant="default"
+                >
+                  ดำเนินการต่อ
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </div>
