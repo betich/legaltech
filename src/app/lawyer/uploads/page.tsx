@@ -19,9 +19,11 @@ import Link from "next/link";
 
 const EvidenceUpload = () => {
   const [dragActive, setDragActive] = useState(false);
-  const [uploadedFiles, setUploadedFiles] = useState([
-    { name: "chat_screenshot.jpg", type: "image", size: "2.4 MB" },
-    { name: "receipt_001.pdf", type: "document", size: "1.1 MB" },
+  const [uploadedFiles, setUploadedFiles] = useState<
+    { name: string; type: string; size: string }[]
+  >([
+    // { name: "chat_screenshot.jpg", type: "image", size: "2.4 MB" },
+    // { name: "receipt_001.pdf", type: "document", size: "1.1 MB" },
   ]);
 
   const evidenceTypes = [

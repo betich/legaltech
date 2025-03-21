@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Search,
   ChevronLeft,
-  Image,
   FileText,
   File,
   Play,
@@ -13,16 +12,33 @@ import {
   Filter,
   Calendar,
   Users,
-  Clock,
   LayoutGrid,
   List,
   Download,
   MoreVertical,
+  ImageIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { mockEvidence } from "./mockEvidence";
+import Image from "next/image";
+import { Evidence } from "./mockEvidence";
 
 const CaseEvidenceViewer = () => {
   const [viewMode, setViewMode] = useState("grid");
+  const [selectedEvidence, setSelectedEvidence] = useState<Evidence | null>(
+    null
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (evidence: Evidence) => {
+    setSelectedEvidence(evidence);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedEvidence(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -90,7 +106,7 @@ const CaseEvidenceViewer = () => {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Image className="h-4 w-4 text-indigo-500" />
+                      <ImageIcon className="h-4 w-4 text-indigo-500" />
                       <span className="text-sm">รูปภาพ</span>
                     </div>
                     <span className="text-sm text-gray-500">24</span>
@@ -163,7 +179,7 @@ const CaseEvidenceViewer = () => {
                   className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                 >
                   <Upload className="h-4 w-4" />
-                  <span>อัพโหลดหลักฐาน</span>
+                  <span>อัปโหลดหลักฐาน</span>
                 </Link>
               </div>
             </div>
@@ -174,53 +190,25 @@ const CaseEvidenceViewer = () => {
                 viewMode === "grid" ? "grid grid-cols-3 gap-4" : "space-y-4"
               }
             >
-              {[
-                {
-                  id: 1,
-                  name: "บันทึกคำให้การ.pdf",
-                  icon: File,
-                  uploader: "ทนาย วิชัย",
-                },
-                {
-                  id: 2,
-                  name: "ภาพถ่ายสถานที่.jpg",
-                  icon: Image,
-                  uploader: "คุณวิภา",
-                },
-                {
-                  id: 3,
-                  name: "วิดีโอบันทึก.mp4",
-                  icon: Play,
-                  uploader: "คุณนภา",
-                },
-                {
-                  id: 4,
-                  name: "สัญญาซื้อขาย.docx",
-                  icon: FileText,
-                  uploader: "ทนาย ปิยะ",
-                },
-                {
-                  id: 5,
-                  name: "หลักฐาน_02.jpg",
-                  icon: Image,
-                  uploader: "คุณสมศักดิ์",
-                },
-                {
-                  id: 6,
-                  name: "รายงานผู้เชี่ยวชาญ.pdf",
-                  icon: File,
-                  uploader: "ดร.สมชาย",
-                },
-              ].map((item) => (
+              {mockEvidence.map((item) => (
                 <Card
                   key={item.id}
                   className={`${viewMode === "list" ? "p-4" : ""}`}
                 >
                   {viewMode === "grid" ? (
                     <div>
-                      <div className="aspect-video bg-gray-100 rounded-t-lg flex items-center justify-center">
-                        <item.icon className="h-8 w-8 text-gray-400" />
-                      </div>
+                      <button
+                        onClick={() => openModal(item)}
+                        className="aspect-video w-full relative bg-gray-100 rounded-t-lg flex items-center justify-center"
+                      >
+                        <Image
+                          src={item.imageSrc}
+                          className="object-cover w-32 h-24 rounded-t-lg"
+                          alt={item.name}
+                          width={800}
+                          height={320}
+                        />
+                      </button>
                       <div className="p-4">
                         <div className="flex items-center justify-between">
                           <div className="font-medium">{item.name}</div>
@@ -229,7 +217,7 @@ const CaseEvidenceViewer = () => {
                           </button>
                         </div>
                         <div className="mt-2 text-sm text-gray-500">
-                          อัพโหลดโดย: {item.uploader}
+                          อัปโหลดโดย: {item.uploader}
                         </div>
                         <div className="text-sm text-gray-500">
                           15 ม.ค. 2567
@@ -238,8 +226,16 @@ const CaseEvidenceViewer = () => {
                     </div>
                   ) : (
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <item.icon className="h-8 w-8 text-gray-400" />
+                      <div className="flex relative items-center gap-4">
+                        <button onClick={() => openModal(item)}>
+                          <Image
+                            src={item.imageSrc}
+                            className="object-cover rounded-t-lg aspect-video h-24 w-auto"
+                            alt={item.name}
+                            width={800}
+                            height={320}
+                          />
+                        </button>
                         <div>
                           <div className="font-medium">{item.name}</div>
                           <div className="text-sm text-gray-500">
@@ -263,6 +259,33 @@ const CaseEvidenceViewer = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedEvidence && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white relative p-4 rounded-lg shadow-lg max-w-lg w-full flex flex-col items-center">
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+            <Image
+              src={selectedEvidence.imageSrc}
+              alt={selectedEvidence.name}
+              width={800}
+              height={600}
+              className="object-contain w-48 h-auto"
+            />
+            <div className="mt-4 text-center">
+              <div className="font-medium">{selectedEvidence.name}</div>
+              <div className="text-sm text-gray-500">
+                อัพโหลดโดย: {selectedEvidence.uploader}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
