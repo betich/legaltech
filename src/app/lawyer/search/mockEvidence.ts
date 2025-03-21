@@ -25,19 +25,19 @@ const users = [
 export const mockEvidence: Evidence[] = [
   {
     id: 1,
-    name: "ใบรับรองแพทย์",
+    name: "ใบรับรองแพทย์.pdf",
     imageSrc: "/images/evidence/demo-medical-certificate.svg",
     uploader: "ทนายวิชัย",
   },
   {
     id: 2,
-    name: "ใบรับรองแพทย์",
+    name: "ใบรับรองแพทย์2.pdf",
     imageSrc: "/images/evidence/thai-demo-medical-certificate.svg",
     uploader: "คุณปัณณวิชญ์",
   },
   ...Array.from({ length: 40 }, (_, i) => ({
     id: i + 3,
-    name: `หลักฐานโรงอาหาร 20 มี.ค. 2568 ${i + 1}`,
+    name: `หลักฐานโรงอาหาร_25032568_${i + 1}.jpg`,
     imageSrc: `/images/evidence/LINE_ALBUM_Evidence_250322_${i + 1}.jpg`,
     uploader: users[i % users.length],
   })),
