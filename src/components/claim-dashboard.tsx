@@ -1,6 +1,7 @@
 import { Calendar, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { LawyerHeader } from "./common/lawyer-header";
 
 const ClaimDashboard = () => {
   const stats = [
@@ -38,46 +39,7 @@ const ClaimDashboard = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex gap-2 items-center">
-          <h1 className="text-xl font-semibold text-indigo-600">ClaimHub</h1>
-          <p className="text-sm font-semibold text-gray-500">for lawyers</p>
-        </div>
-        {/* <div className="flex items-center gap-4">
-          <button className="p-2 rounded-full hover:bg-gray-100">
-            <span className="sr-only">Notifications</span>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-          </button>
-          <button className="p-2 rounded-full hover:bg-gray-100">
-            <span className="sr-only">User menu</span>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
-          </button>
-        </div> */}
-      </div>
+      <LawyerHeader />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
