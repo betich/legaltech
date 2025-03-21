@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <!-- Background -->
+  <rect width="800" height="1000" fill="#ffffff" />
+  
+  <!-- Demo Watermark -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill-opacity="0.1" text-anchor="middle" transform="rotate(-45, 400, 500)">DEMO ONLY</text>
+  <text x="400" y="650" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill-opacity="0.1" text-anchor="middle" transform="rotate(-45, 400, 650)">NOT VALID</text>
+  
+  <!-- Header -->
+  <rect x="50" y="50" width="700" height="100" rx="5" ry="5" fill="#f0f0f0" stroke="#000000" stroke-width="1" />
+  <text x="400" y="95" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">DEMONSTRATION HOSPITAL</text>
+  <text x="400" y="125" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">123 Sample Street, Demonstration City • Tel: (555) 123-4567</text>
+  
+  <!-- Title -->
+  <rect x="200" y="170" width="400" height="50" rx="5" ry="5" fill="#f0f0f0" stroke="#000000" stroke-width="1" />
+  <text x="400" y="202" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">MEDICAL CERTIFICATE</text>
+  
+  <!-- Reference Numbers -->
+  <rect x="50" y="240" width="300" height="50" rx="5" ry="5" fill="#ffffff" stroke="#000000" stroke-width="1" />
+  <text x="75" y="270" font-family="Arial, sans-serif" font-size="14">Reference: DEMO-MC-12345</text>
+  
+  <rect x="450" y="240" width="300" height="50" rx="5" ry="5" fill="#ffffff" stroke="#000000" stroke-width="1" />
+  <text x="475" y="270" font-family="Arial, sans-serif" font-size="14">Patient ID: DEMO-PT-67890</text>
+  
+  <!-- Body Content -->
+  <rect x="50" y="310" width="700" height="500" rx="5" ry="5" fill="#ffffff" stroke="#000000" stroke-width="1" />
+  
+  <!-- Date -->
+  <text x="75" y="350" font-family="Arial, sans-serif" font-size="14">Date: ___________________</text>
+  
+  <!-- Doctor Info -->
+  <text x="75" y="400" font-family="Arial, sans-serif" font-size="14">I, Dr. _________________________________, Medical License #: ______________</text>
+  
+  <!-- Patient Info -->
+  <text x="75" y="450" font-family="Arial, sans-serif" font-size="14">certify that I have examined Patient: _________________________________</text>
+  <text x="75" y="480" font-family="Arial, sans-serif" font-size="14">Age: ________ Gender: ________</text>
+  
+  <!-- Diagnosis -->
+  <text x="75" y="530" font-family="Arial, sans-serif" font-size="14">Diagnosis: _________________________________________________________________</text>
+  <text x="75" y="560" font-family="Arial, sans-serif" font-size="14">____________________________________________________________________________</text>
+  
+  <!-- Medical Leave -->
+  <text x="75" y="610" font-family="Arial, sans-serif" font-size="14">The patient is granted medical leave from: ____________ to: ____________</text>
+  
+  <!-- Additional Comments -->
+  <text x="75" y="660" font-family="Arial, sans-serif" font-size="14">Additional Comments:</text>
+  <text x="75" y="690" font-family="Arial, sans-serif" font-size="14">____________________________________________________________________________</text>
+  <text x="75" y="720" font-family="Arial, sans-serif" font-size="14">____________________________________________________________________________</text>
+  
+  <!-- Signature Area -->
+  <line x1="75" y1="780" x2="300" y2="780" stroke="#000000" stroke-width="1" />
+  <text x="180" y="800" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Doctor's Signature</text>
+  
+  <line x1="500" y1="780" x2="725" y2="780" stroke="#000000" stroke-width="1" />
+  <text x="610" y="800" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Hospital Stamp</text>
+  
+  <!-- Footer -->
+  <rect x="50" y="850" width="700" height="80" rx="5" ry="5" fill="#f0f0f0" stroke="#000000" stroke-width="1" />
+  <text x="400" y="885" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">THIS IS A DEMO DOCUMENT</text>
+  <text x="400" y="910" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">FOR TRAINING AND DEMONSTRATION PURPOSES ONLY</text>
+</svg>
