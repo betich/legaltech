@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
 
 type FileType = "image" | "video" | "document";
 
@@ -95,9 +96,12 @@ export const ChatBot: React.FC = () => {
               </p>
               <div className="mt-4 p-3 bg-orange-50 rounded-lg flex items-center">
                 <LinkIcon className="text-orange-500 mr-2" size={18} />
-                <a href="/case/2024101" className="text-orange-600 font-medium">
+                <Link
+                  href="/case/2024101"
+                  className="text-orange-600 font-medium"
+                >
                   ดูรายละเอียดคดีหมายเลข 2024101
-                </a>
+                </Link>
               </div>
               {/* list of all uploaded files */}
               <div className="mt-4 space-y-2">
