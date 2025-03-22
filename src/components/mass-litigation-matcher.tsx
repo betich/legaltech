@@ -14,9 +14,8 @@ import {
 } from "lucide-react";
 import { BackHeader } from "./common/back-header";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { caseData, GroupCase } from "@/lib/cases";
+import { ChatBot } from "./chat-bot";
 
 interface SearchCases extends GroupCase {
   matchScore: number | null;
@@ -27,12 +26,6 @@ const MassLitigationMatcher = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCases, setFilteredCases] = useState<SearchCases[]>([]);
-  const [showChatbot, setShowChatbot] = useState(false);
-  const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
-    [{ text: "สวัสดีค่ะ ฉันสามารถช่วยคุณค้นหาคดีที่เหมาะสมได้", isUser: false }]
-    // match to
-  );
-  const [newMessage, setNewMessage] = useState("");
 
   // Simulate data loading
   useEffect(() => {
@@ -95,33 +88,6 @@ const MassLitigationMatcher = () => {
 
     return () => clearTimeout(delaySearch);
   }, [searchQuery, caseCriteria]);
-
-  const handleChatSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newMessage.trim()) return;
-
-    // Add user message
-    setMessages((prev) => [...prev, { text: newMessage, isUser: true }]);
-
-    // Simulate bot response
-    setTimeout(() => {
-      const randomCase = caseCriteria[0];
-      const similarityScore = Math.floor(Math.random() * 101);
-      setMessages((prev) => [
-        ...prev,
-        {
-          text: `ขอบคุณสำหรับคำถาม เราขอแนะนำคดี "${
-            randomCase.title
-          }" ที่มีคุณสมบัติดังนี้: ${randomCase.requirements.join(
-            ", "
-          )} (ความเหมือน: ${similarityScore}%)`,
-          isUser: false,
-        },
-      ]);
-    }, 1000);
-
-    setNewMessage("");
-  };
 
   // Loading skeleton component
   const CaseSkeleton = () => (
@@ -285,62 +251,7 @@ const MassLitigationMatcher = () => {
       </div>
 
       {/* Chatbot */}
-      <div className="fixed bottom-6 right-6 z-50">
-        {!showChatbot ? (
-          <Button
-            onClick={() => setShowChatbot(true)}
-            className="h-12 w-12 rounded-full bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center"
-          >
-            <MessageCircle className="h-6 w-6 text-white" />
-          </Button>
-        ) : (
-          <Card className="w-80 bg-white">
-            <CardHeader className="flex flex-row items-center justify-between p-4">
-              <CardTitle className="text-lg">ผู้ช่วยค้นหาคดี</CardTitle>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowChatbot(false)}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </CardHeader>
-            <CardContent className="p-4">
-              <div className="h-80 overflow-y-auto space-y-4 mb-4">
-                {messages.slice(0, 5).map((message, index) => (
-                  <div
-                    key={index}
-                    className={`flex ${
-                      message.isUser ? "justify-end" : "justify-start"
-                    }`}
-                  >
-                    <div
-                      className={`max-w-[80%] rounded-lg p-3 ${
-                        message.isUser
-                          ? "bg-indigo-600 text-white"
-                          : "bg-gray-100 text-gray-800"
-                      }`}
-                    >
-                      {message.text}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <form onSubmit={handleChatSubmit} className="flex gap-2">
-                <Input
-                  value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
-                  placeholder="พิมพ์ข้อความ..."
-                  className="flex-1"
-                />
-                <Button type="submit">
-                  <Send className="h-4 w-4" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        )}
-      </div>
+      <ChatBot />
     </div>
   );
 };
