@@ -99,6 +99,21 @@ export const ChatBot: React.FC = () => {
                   ดูรายละเอียดคดีหมายเลข 2024101
                 </a>
               </div>
+              {/* list of all uploaded files */}
+              <div className="mt-4 space-y-2">
+                {/* aggregate from messgaes */}
+                {[...newMessages]
+                  .flatMap((message) => message.files || [])
+                  .map((file, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center bg-white bg-opacity-20 rounded p-2"
+                    >
+                      {getFileIcon(file.type)}
+                      <span className="ml-2 text-sm truncate">{file.name}</span>
+                    </div>
+                  ))}
+              </div>
             </div>
           );
           setStep(0);
@@ -115,7 +130,7 @@ export const ChatBot: React.FC = () => {
           timestamp: new Date(),
         },
       ]);
-    }, 1000);
+    }, 2500);
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>): void => {
