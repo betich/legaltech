@@ -8,6 +8,17 @@ export interface GroupCase {
 
 export const caseData: GroupCase[] = [
   {
+    id: 0,
+    title: "อาหารเป็นพิษจากอาหารที่โรงอาหารจุฬาฯ",
+    requirements: [
+      "บริโภคอาหารจากโรงอาหาร ตั้งแต่วันที่ 1 มีนาคม 2568",
+      "มีอาการท้องเสียหรืออาการอื่น ๆ",
+      "มีหลักฐานทางการแพทย์",
+    ],
+    currentMembers: 10,
+    status: "กำลังรวบรวม",
+  },
+  {
     id: 1,
     title: "ผู้ได้รับผลกระทบจากมลพิษทางอากาศ",
     requirements: [

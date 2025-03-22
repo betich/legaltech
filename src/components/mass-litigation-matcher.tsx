@@ -30,6 +30,7 @@ const MassLitigationMatcher = () => {
   const [showChatbot, setShowChatbot] = useState(false);
   const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
     [{ text: "สวัสดีค่ะ ฉันสามารถช่วยคุณค้นหาคดีที่เหมาะสมได้", isUser: false }]
+    // match to
   );
   const [newMessage, setNewMessage] = useState("");
 
@@ -104,8 +105,7 @@ const MassLitigationMatcher = () => {
 
     // Simulate bot response
     setTimeout(() => {
-      const randomCase =
-        caseCriteria[Math.floor(Math.random() * caseCriteria.length)];
+      const randomCase = caseCriteria[0];
       const similarityScore = Math.floor(Math.random() * 101);
       setMessages((prev) => [
         ...prev,
