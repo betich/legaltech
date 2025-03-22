@@ -44,16 +44,14 @@ const LoginPage = ({
 
         if (results.every((r) => r === true)) {
           if (navigator.credentials) {
-            await navigator.credentials.get({
-              publicKey: {
-                challenge: new Uint8Array(32),
-                rpId: window.location.hostname,
-                allowCredentials: [],
-                userVerification: "preferred",
-              },
-            });
-          } else {
-            // Create a new passkey
+            // await navigator.credentials.get({
+            //   publicKey: {
+            //     challenge: new Uint8Array(32),
+            //     rpId: window.location.hostname,
+            //     allowCredentials: [],
+            //     userVerification: "preferred",
+            //   },
+            // });
             await navigator.credentials.create({
               publicKey: {
                 rp: {
