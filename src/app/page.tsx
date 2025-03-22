@@ -40,12 +40,10 @@ const LoginPage = ({
         await Promise.all([
           PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable(),
           PublicKeyCredential.isConditionalMediationAvailable(),
-        ]).then((results) => {
+        ]).then(async (results) => {
           if (results.every((r) => r === true)) {
-            // Display "Create a new passkey" button
-
             if (navigator.credentials) {
-              navigator.credentials.get({
+              await navigator.credentials.get({
                 publicKey: {
                   challenge: new Uint8Array(32),
                   rpId: window.location.hostname,
@@ -56,7 +54,7 @@ const LoginPage = ({
             }
           } else {
             // Create a new passkey
-            navigator.credentials.create({
+            await navigator.credentials.create({
               publicKey: {
                 rp: {
                   id: window.location.hostname,
