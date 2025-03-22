@@ -37,21 +37,21 @@ const LoginPage = ({
         PublicKeyCredential.isConditionalMediationAvailable
       ) {
         // Check if user verifying platform authenticator is available.
-        await Promise.all([
+        const results = await Promise.all([
           PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable(),
           PublicKeyCredential.isConditionalMediationAvailable(),
-        ]).then(async (results) => {
-          if (results.every((r) => r === true)) {
-            if (navigator.credentials) {
-              await navigator.credentials.get({
-                publicKey: {
-                  challenge: new Uint8Array(32),
-                  rpId: window.location.hostname,
-                  allowCredentials: [],
-                  userVerification: "preferred",
-                },
-              });
-            }
+        ]);
+
+        if (results.every((r) => r === true)) {
+          if (navigator.credentials) {
+            await navigator.credentials.get({
+              publicKey: {
+                challenge: new Uint8Array(32),
+                rpId: window.location.hostname,
+                allowCredentials: [],
+                userVerification: "preferred",
+              },
+            });
           } else {
             // Create a new passkey
             await navigator.credentials.create({
@@ -79,20 +79,8 @@ const LoginPage = ({
               },
             });
           }
-        });
+        }
       }
-
-      // Example structure - actual implementation would use WebAuthn API
-      // await navigator.credentials.get({
-      //   publicKey: {
-      //     challenge: new Uint8Array(32),
-      //     rpId: window.location.hostname,
-      //     allowCredentials: [],
-      //     userVerification: "preferred",
-      //   },
-      // });
-      // Handle the credential
-      // create a credential
 
       //  redirect
       switch (userType) {
