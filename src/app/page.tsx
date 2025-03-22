@@ -44,6 +44,17 @@ const LoginPage = ({
           if (results.every((r) => r === true)) {
             // Display "Create a new passkey" button
 
+            if (navigator.credentials) {
+              navigator.credentials.get({
+                publicKey: {
+                  challenge: new Uint8Array(32),
+                  rpId: window.location.hostname,
+                  allowCredentials: [],
+                  userVerification: "preferred",
+                },
+              });
+            }
+          } else {
             // Create a new passkey
             navigator.credentials.create({
               publicKey: {
@@ -74,14 +85,14 @@ const LoginPage = ({
       }
 
       // Example structure - actual implementation would use WebAuthn API
-      await navigator.credentials.get({
-        publicKey: {
-          challenge: new Uint8Array(32),
-          rpId: window.location.hostname,
-          allowCredentials: [],
-          userVerification: "preferred",
-        },
-      });
+      // await navigator.credentials.get({
+      //   publicKey: {
+      //     challenge: new Uint8Array(32),
+      //     rpId: window.location.hostname,
+      //     allowCredentials: [],
+      //     userVerification: "preferred",
+      //   },
+      // });
       // Handle the credential
       // create a credential
 
