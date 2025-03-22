@@ -28,8 +28,53 @@ const LoginPage = ({
   const handlePasskeyLogin = async () => {
     // This is where you would implement the actual WebAuthn/passkey logic
     try {
+      // Availability of `window.PublicKeyCredential` means WebAuthn is usable.
+      // `isUserVerifyingPlatformAuthenticatorAvailable` means the feature detection is usable.
+      // `isConditionalMediationAvailable` means the feature detection is usable.
+      if (
+        window.PublicKeyCredential &&
+        PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable &&
+        PublicKeyCredential.isConditionalMediationAvailable
+      ) {
+        // Check if user verifying platform authenticator is available.
+        await Promise.all([
+          PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable(),
+          PublicKeyCredential.isConditionalMediationAvailable(),
+        ]).then((results) => {
+          if (results.every((r) => r === true)) {
+            // Display "Create a new passkey" button
+
+            // Create a new passkey
+            navigator.credentials.create({
+              publicKey: {
+                rp: {
+                  id: window.location.hostname,
+                  name: "ClaimHub",
+                },
+                user: {
+                  id: new Uint8Array(32),
+                  name: "user",
+                  displayName: "User",
+                },
+                pubKeyCredParams: [
+                  {
+                    type: "public-key",
+                    alg: -7,
+                  },
+                ],
+                challenge: new Uint8Array(32),
+                authenticatorSelection: {
+                  userVerification: "preferred",
+                },
+                attestation: "direct",
+              },
+            });
+          }
+        });
+      }
+
       // Example structure - actual implementation would use WebAuthn API
-      const credential = await navigator.credentials.get({
+      await navigator.credentials.get({
         publicKey: {
           challenge: new Uint8Array(32),
           rpId: window.location.hostname,
@@ -38,6 +83,7 @@ const LoginPage = ({
         },
       });
       // Handle the credential
+      // create a credential
 
       //  redirect
       switch (userType) {
